@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe | Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body class="home">
+  <main class="app homeApp">
+    <!-- Header -->
+    <header class="homeHeader">
+      <div class="brand">
+        <div class="brandMark" aria-hidden="true">XO</div>
+        <div class="brandText">
+          <h1 class="brandTitle">Tic-Tac-Toe</h1>
+          <p class="brandSub">Flask backend • Animated UI • Session-based</p>
+        </div>
+      </div>
+
+      <!-- Removed "Play" from header -->
+      <nav class="homeNav" aria-label="Main navigation">
+        <a class="link" id="navHome" href="#home">Home</a>
+        <a class="link" id="navAbout" href="#about">About Us</a>
+      </nav>
+    </header>
+
+    <!-- HOME VIEW (visible by default) -->
+    <section id="home" class="homeOnly">
+      <section class="hero">
+        <div class="heroLeft">
+          <h2 class="heroTitle">Play smarter. Win faster.</h2>
+          <p class="heroText">
+            A clean, responsive Tic-Tac-Toe game built with a Python (Flask) backend.
+            Enjoy smooth animations, win highlights, and session-based score tracking.
+          </p>
+
+          <div class="heroBadges">
+            <span class="badge">3×3 Board</span>
+            <span class="badge">Win Highlight</span>
+            <span class="badge">Draw Animation</span>
+            <span class="badge">Session Score</span>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="infoCard">
+            <div class="infoTop">
+              <h3 class="infoTitle">Quick Preview</h3>
+              <span class="infoHint">auto demo</span>
+            </div>
+
+            <!-- Mini animated preview -->
+            <div class="miniBoard" id="miniBoard" aria-label="Mini Tic-Tac-Toe Preview">
+              <div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div>
+              <div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div>
+              <div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div><div class="miniCell" data-val=""></div>
+            </div>
+
+            <p class="miniCaption">
+              Tip: The real game includes win glow + confetti effects.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards">
+        <article class="card">
+          <h3>Controls</h3>
+          <ul class="list">
+            <li><strong>Restart Round</strong> clears the board but keeps score.</li>
+            <li><strong>Reset All</strong> clears board and score.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Rules</h3>
+          <ol class="list">
+            <li>Players are <strong>X</strong> and <strong>O</strong>.</li>
+            <li>Take turns placing marks.</li>
+            <li>Get <strong>3 in a row</strong> to win.</li>
+            <li>If no winner and board is full: <strong>draw</strong>.</li>
+          </ol>
+        </article>
+
+        <article class="card">
+          <h3>Data Info</h3>
+          <ul class="list">
+            <li>State is stored in your <strong>Flask session</strong> (no DB).</li>
+            <li>No login/account required.</li>
+            <li>Score remains until session/cookies are cleared.</li>
+          </ul>
+        </article>
+      </section>
+    </section>
+
+    <!-- ABOUT VIEW (hidden until clicking About Us) -->
+    <section id="about" class="panel aboutPanel aboutOnly">
+      <h2>About Us</h2>
+      <p class="aboutText">
+        This Tic‑Tac‑Toe project is a full‑stack mini application built to demonstrate
+        how a Python backend and a modern frontend work together. The backend (Flask)
+        manages the rules, turn logic, and scoring, while the frontend focuses on a smooth,
+        attractive user experience with animations and effects.
+      </p>
+
+      <div class="aboutGrid">
+        <div class="aboutBox">
+          <h3>What we built</h3>
+          <ul class="list">
+            <li>Home page (rules + data info + about section).</li>
+            <li>Game page with animated moves and win highlighting.</li>
+            <li>API endpoints: <code>/api/state</code>, <code>/api/move</code>, <code>/api/restart</code>, <code>/api/reset</code>.</li>
+          </ul>
+        </div>
+
+        <div class="aboutBox">
+          <h3>How data is handled</h3>
+          <ul class="list">
+            <li>Stored per-user in a Flask session (cookie-based).</li>
+            <li>No database in this version, so setup is simple.</li>
+            <li>No personal data is required.</li>
+          </ul>
+        </div>
+
+        <div class="aboutBox">
+          <h3>Future improvements</h3>
+          <ul class="list">
+            <li>AI opponent (easy/medium/hard)</li>
+            <li>Leaderboard using a database</li>
+            <li>Sound effects toggle + more animations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Start button at the END of page -->
+    <section class="ctaEnd">
+      <p class="ctaText">Ready to play? Start a fresh game now.</p>
+      <a class="startBtn" href="{{ url_for('start') }}">Start Game</a>
+      <p class="ctaHint">This resets board + score and redirects to the game.</p>
+    </section>
+  </main>
+
+  <button class="toTop" id="toTop" type="button" aria-label="Scroll to top">Top</button>
+  <script src="{{ url_for('static', filename='home.js') }}"></script>
+</body>
+</html>
